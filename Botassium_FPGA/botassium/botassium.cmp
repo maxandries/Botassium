@@ -1,0 +1,14 @@
+	component botassium is
+		port (
+			clk_clk                : in  std_logic                     := 'X';             -- clk
+			nios_mem_s2_address    : in  std_logic_vector(6 downto 0)  := (others => 'X'); -- address
+			nios_mem_s2_chipselect : in  std_logic                     := 'X';             -- chipselect
+			nios_mem_s2_clken      : in  std_logic                     := 'X';             -- clken
+			nios_mem_s2_write      : in  std_logic                     := 'X';             -- write
+			nios_mem_s2_readdata   : out std_logic_vector(31 downto 0);                    -- readdata
+			nios_mem_s2_writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			nios_mem_s2_byteenable : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			reset_reset_n          : in  std_logic                     := 'X'              -- reset_n
+		);
+	end component botassium;
+

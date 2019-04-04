@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed Apr 03 06:05:50 2019
+Quartus Prime Version : 15.1.0 Build 185 10/21/2015 SJ Lite Edition
+Revision Name : minibot4
+Top-level Entity Name : minibot4
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 5,290 / 22,320 ( 24 % )
+    Total combinational functions : 4,888 / 22,320 ( 22 % )
+    Dedicated logic registers : 1,705 / 22,320 ( 8 % )
+Total registers : 1705
+Total pins : 142 / 154 ( 92 % )
+Total virtual pins : 0
+Total memory bits : 16,896 / 608,256 ( 3 % )
+Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

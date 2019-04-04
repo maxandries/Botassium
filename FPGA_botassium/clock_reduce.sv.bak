@@ -1,0 +1,11 @@
+module clock_reduce(input clk_in, input logic [31:0] reducer, output clk_out);
+	logic [31:0] count_20;
+	always @(posedge clk_in) begin
+   count_20 <= count_20 + 1;
+   if(count_20 == reducer)
+   begin
+      count_20<=0;
+      clk_out <= !clk_out;
+   end
+	end
+endmodule

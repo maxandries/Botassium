@@ -1,0 +1,1 @@
+set_global_assignment -name QIP_FILE [file join $::quartus(qip_path) INGI2315_lab2_sopc/INGI2315_lab2_sopc.qip]

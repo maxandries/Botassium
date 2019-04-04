@@ -1,0 +1,85 @@
+module sonar ( input logic clk,
+	            input logic reset,
+	            input logic echo,
+	            output logic trigger,
+	            output logic [31:0] distance);
+
+logic [31:0]	counter1, counter2, counter3;
+logic 			reset1, reset2, reset3;
+logic          endPulse, increment_2, measure_time_out;
+logic 			getDistance;
+
+Counter count1(clk, counter1, reset1, 1'b1);
+Counter count2(clk, counter2, reset2, increment_2);
+Counter count3(clk, counter3, reset3, 1'b1);
+
+assign endPulse = counter1 > 32'd1000;          //10 micro second //1000
+assign measure_time_out = counter3 > 32'd2500000; // 50 ms 	
+
+	
+always_ff @(posedge getDistance, negedge reset, posedge endPulse)
+	begin
+		if (endPulse)  //si counter1 est arrivé a 10us
+			begin
+				reset1 <= 1'b1;    //on reset le counter1
+				trigger <= 1'b0;   //on met trigger à 0
+			end
+		else if (~reset | getDistance)    //si on reset ou si le counter3 a compté pendant 50ms on refresh
+			begin
+				reset1 <= 1'b0;             //
+				trigger <= 1'b1;            //et on recommence a envoyer le trigger en le mettant haut
+			end
+	end		
+	
+	
+	
+
+always_ff @(posedge clk, negedge reset, posedge measure_time_out)
+	begin
+		if (~reset)
+			begin
+				reset2 <= 1'b1;
+				reset3 <= 1'b1;
+			end
+		else if (measure_time_out)   //si le counter3 est arrivé a 50ms alors on reset et on remet le trigger high
+			begin
+				reset2 <= 1'b1;
+				reset3 <= 1'b1;
+				getDistance <= 1'b1;
+			end
+		else if (~echo & increment_2)  //si echo est retombé a 0 et que le counter2 tourne
+			begin
+				increment_2 <= 1'b0;     //on arrete de compter dans counter 2
+				distance <= counter2*32'd17/32'd5000; // mm      //on donne la valeur du counter2 a distance
+			end
+		else if (echo)          //si echo est high pas de reset et on incremente le counter2
+			begin
+				reset2 <= 1'b0;
+				reset3 <= 1'b0;
+				increment_2 <= 1'b1;
+				getDistance <= 1'b0;
+			end
+	
+		
+	end	
+	
+endmodule
+
+
+module Counter( input logic CLOCK,
+		   output logic [31:0] CounterOut,
+		   input logic 	     DoReset,
+		   input logic 	     DoIncrement
+		   );
+   
+   always_ff @(posedge CLOCK)
+     begin
+	if(DoReset)
+	  CounterOut <= 0;
+	else if(DoIncrement)
+	  CounterOut = CounterOut + 32'd1;
+   end   
+endmodule 
+
+
+

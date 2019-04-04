@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sat Mar 30 13:35:07 2019
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : Botassium
+Top-level Entity Name : Botassium
+Family : Cyclone IV E
+Total logic elements : 106
+    Total combinational functions : 104
+    Dedicated logic registers : 80
+Total registers : 80
+Total pins : 150
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

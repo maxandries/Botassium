@@ -1,0 +1,22 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst INGI2315_lab2_sopc.jtag_uart_0 -pg 1 -lvl 3 -y 130
+preplace inst INGI2315_lab2_sopc.cpu.clock_bridge -pg 1
+preplace inst INGI2315_lab2_sopc.clk_0 -pg 1 -lvl 1 -y 70
+preplace inst INGI2315_lab2_sopc.cpu -pg 1 -lvl 2 -y 160
+preplace inst INGI2315_lab2_sopc.cpu.cpu -pg 1
+preplace inst INGI2315_lab2_sopc -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst INGI2315_lab2_sopc.Button -pg 1 -lvl 3 -y 30
+preplace inst INGI2315_lab2_sopc.cpu.reset_bridge -pg 1
+preplace inst INGI2315_lab2_sopc.onchip_mem -pg 1 -lvl 3 -y 230
+preplace inst INGI2315_lab2_sopc.LEDs -pg 1 -lvl 3 -y 310
+preplace netloc EXPORT<net_container>INGI2315_lab2_sopc</net_container>(SLAVE)clk_0.clk_in,(SLAVE)INGI2315_lab2_sopc.clk) 1 0 1 NJ
+preplace netloc EXPORT<net_container>INGI2315_lab2_sopc</net_container>(SLAVE)LEDs.external_connection,(SLAVE)INGI2315_lab2_sopc.leds_external_connection) 1 0 3 NJ 340 NJ 340 NJ
+preplace netloc FAN_OUT<net_container>INGI2315_lab2_sopc</net_container>(SLAVE)jtag_uart_0.clk,(SLAVE)Button.clk,(MASTER)clk_0.clk,(SLAVE)cpu.clk,(SLAVE)onchip_mem.clk1,(SLAVE)LEDs.clk) 1 1 2 400 80 780
+preplace netloc EXPORT<net_container>INGI2315_lab2_sopc</net_container>(SLAVE)Button.external_connection,(SLAVE)INGI2315_lab2_sopc.button_external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc FAN_OUT<net_container>INGI2315_lab2_sopc</net_container>(SLAVE)onchip_mem.reset1,(SLAVE)jtag_uart_0.reset,(SLAVE)cpu.reset,(SLAVE)LEDs.reset,(MASTER)clk_0.clk_reset,(SLAVE)Button.reset) 1 1 2 380 100 800
+preplace netloc INTERCONNECT<net_container>INGI2315_lab2_sopc</net_container>(MASTER)cpu.instruction_master,(SLAVE)Button.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)onchip_mem.s1,(MASTER)cpu.data_master,(SLAVE)cpu.debug_mem_slave,(SLAVE)LEDs.s1) 1 1 2 420 120 820
+preplace netloc POINT_TO_POINT<net_container>INGI2315_lab2_sopc</net_container>(MASTER)cpu.irq,(SLAVE)jtag_uart_0.irq) 1 2 1 840
+preplace netloc EXPORT<net_container>INGI2315_lab2_sopc</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)INGI2315_lab2_sopc.reset) 1 0 1 NJ
+levelinfo -pg 1 0 170 1030
+levelinfo -hier INGI2315_lab2_sopc 180 210 540 870 1020

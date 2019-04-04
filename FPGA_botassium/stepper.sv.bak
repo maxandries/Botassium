@@ -1,0 +1,5 @@
+module stepper(input logic clk,
+					output logic dir,
+					output logic step);
+	
+endmodule

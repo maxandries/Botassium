@@ -1,0 +1,14 @@
+Partition Merge Status : Successful - Tue Feb 19 14:51:24 2019
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : minibot4
+Top-level Entity Name : minibot4
+Family : Cyclone IV E
+Total logic elements : 1,199
+    Total combinational functions : 822
+    Dedicated logic registers : 947
+Total registers : 947
+Total pins : 142
+Total virtual pins : 0
+Total memory bits : 8,832
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
